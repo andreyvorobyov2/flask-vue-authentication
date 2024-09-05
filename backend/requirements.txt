@@ -1,0 +1,6 @@
+Flask
+flask_cors
+flask_migrate
+flask_sqlalchemy
+flask_session
+bcrypt
