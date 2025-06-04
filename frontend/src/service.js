@@ -1,7 +1,8 @@
 
 import axios from "axios";
 
-const backendURL = 'http://127.0.0.1:5000/';
+//const backendURL = 'http://127.0.0.1:5000/';
+const backendURL = 'http://172.20.0.10:8080/api/';
 
 function  SignupService(OnSuccess, OnError, username, password){
     axios.post(backendURL + 'signup',
