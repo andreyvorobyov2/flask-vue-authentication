@@ -41,6 +41,10 @@ def credentials_required(f):
     return decorator
 
 
+@app.route('/', methods=["GET"])
+def home_page():
+    return make_response('API page', 200)
+
 @app.route('/signup', methods=["POST"])
 @credentials_required
 def signup(username, password):
