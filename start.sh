@@ -19,3 +19,9 @@ docker network create --subnet=172.20.0.0/16 mynetwork
 
 # запускаем контейнер -it интерактивно -d фоново
 docker run --net mynetwork --ip 172.20.0.10 -d flask-vue-auth
+
+# для подключения консолью к запущенному контейнеру
+# выведет список контейнеров
+# docker ps
+# подключаемся к одному из этого списка
+# docker exec -it <id container> sh

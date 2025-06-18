@@ -23,6 +23,9 @@ RUN apt-get install -y python3-virtualenv
 # вкючение mod_wsgi
 RUN a2enmod rewrite
 
+# установка redis
+RUN apt-get install -y redis
+
 COPY backend/ /var/www/flask-vue-auth
 COPY frontend/dist/ /var/www/flask-vue-auth/static
 WORKDIR /var/www/flask-vue-auth
@@ -47,3 +50,5 @@ RUN chmod -R 777 instance
 EXPOSE 80 8080
 
 CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
+#CMD ["service redis-server start"]
+

@@ -1,0 +1,6 @@
+.m-center-container {
+  display: flex;
+  justify-content: center; /** horizontal align */
+  align-items: center; /* vertical align */
+  height: 100vh; /* full screen */
+}

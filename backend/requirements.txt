@@ -1,6 +1,8 @@
-Flask
+flask
 flask_cors
 flask_migrate
 flask_sqlalchemy
 flask_session
 bcrypt
+redis
+flask_socketio

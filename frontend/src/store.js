@@ -1,21 +1,21 @@
-import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate';
-
+import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 const store = new Vuex.Store({
-    plugins: [createPersistedState({
-        storage: window.sessionStorage,
-    })],
+  plugins: [
+    createPersistedState({
+      storage: window.sessionStorage,
+    }),
+  ],
 
-    state:{
-        username: '',
+  state: {
+    username: "",
+  },
+  mutations: {
+    save_username(state, username) {
+      state.username = username;
     },
-    mutations:{
-        SaveUserName(state, username){
-            state.username = username;
-        }
-    }
-
-})
+  },
+});
 
 export default store;

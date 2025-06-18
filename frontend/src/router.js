@@ -1,54 +1,44 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import store from './store.js';
-import HomePage from './components/HomePage.vue';
-import AboutPage from './components/AboutPage.vue';
-import LoginPage from './components/LoginPage.vue';
-import SignupPage from './components/SignupPage.vue';
-import MyProjectsPage from './components/MyProjectsPage.vue';
+import { createRouter, createWebHistory } from "vue-router";
+import store from "@/store";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomePage
+      path: "/chat",
+      redirect: "/",
+      meta: { requiresAuth: true },
     },
     {
-        path: '/about',
-        name: 'about',
-        component: AboutPage
+      path: "/",
+      name: "chat",
+      component: () => import("@/components/PageChat.vue"),
+      meta: { requiresAuth: true },
     },
     {
-        path: '/login',
-        name: 'login',
-        component: LoginPage
+      path: "/login",
+      name: "login",
+      component: () => import("@/components/PageLogin.vue"),
     },
     {
-        path: '/signup',
-        name: 'signup',
-        component: SignupPage
+      path: "/signup",
+      name: "signup",
+      component: () => import("@/components/PageSignup.vue"),
     },
-    {
-        path: '/myprojects',
-        name: 'myprojects',
-        component: MyProjectsPage,
-        meta: {requiresAuth: true}
-    },
-  ]
-})
+  ],
+});
 
 router.beforeEach((to, from, next) => {
-    if (to.meta.requiresAuth) {
-      const username = store.state.username;
-      if (username) {
-        next();
-      } else {
-        next('/login');
-      }
-    } else {
+  if (to.meta.requiresAuth) {
+    const username = store.state.username;
+    if (username) {
       next();
+    } else {
+      next("/login");
     }
-  });
+  } else {
+    next();
+  }
+});
 
-export default router
+export default router;
